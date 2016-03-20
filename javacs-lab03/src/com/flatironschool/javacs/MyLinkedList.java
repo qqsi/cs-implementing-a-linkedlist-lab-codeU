@@ -217,26 +217,12 @@ public class MyLinkedList<E> implements List<E> {
 
 	@Override
 	public boolean remove(Object obj) {
-		if (this.size == 0) {
+		int index = this.indexOf(obj);
+		if (index == -1) {
 			return false;
 		}
-		if (equals(obj, head.cargo)) {
-			head = head.next;
-			size--;
-			return true;
-		}
-		Node previous = head;
-		Node node = head.next;
-		while (node != null) {
-			if (equals(obj, node.cargo)) {
-				previous.next = node.next;
-				size--;
-				return true;
-			}
-			previous = previous.next;
-			node = node.next;
-		}
-		return false;
+		this.remove(index);
+		return true;
 	}
 
 	@Override
